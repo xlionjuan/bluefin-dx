@@ -12,6 +12,15 @@ RELEASE="$(rpm -E %fedora)"
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
+
+# Add cloudflare-warp.repo to /etc/yum.repos.d/
+curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo
+
+
+# Install
+rpm-ostree install cloudflare-warp
+
+
 # this installs a package from fedora repos
 rpm-ostree install screen
 
