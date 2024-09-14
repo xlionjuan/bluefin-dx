@@ -20,6 +20,7 @@ curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /et
 # Install
 rpm-ostree install cloudflare-warp
 
+rpm-ostree install https://github.com/rustdesk/rustdesk/releases/download/nightly/rustdesk-1.3.1-0.x86_64.rpm
 
 # this installs a package from fedora repos
 rpm-ostree install screen
