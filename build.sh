@@ -12,6 +12,10 @@ RELEASE="$(rpm -E %fedora)"
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
+# Create symlinks to fix packages that create directories in /opt
+get_yaml_array OPTFIX '.optfix[]' "$1"
+if [[ ${#OPTFIX[@]} -gt 0 ]]; then
+    echo "Creating symlinks to fix packages that install to /opt"
 
 # Add cloudflare-warp.repo to /etc/yum.repos.d/
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo
