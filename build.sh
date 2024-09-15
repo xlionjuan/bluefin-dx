@@ -199,3 +199,6 @@ rpm-ostree install zerotier-one
 #### Example for enabling a System Unit File
 
 #systemctl enable podman.socket
+systemctl enable warp-svc.service
+systemctl enable rustdesk.service
+systemctl enable zerotier-one
