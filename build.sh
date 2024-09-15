@@ -97,7 +97,10 @@ mkdir -p "/usr/local/share/pkgconfig"
 
 # Install
 
-rpm-ostree install intel-basekit
+# GG, seens ran out of runner's disk space
+#rpm-ostree install intel-basekit
+
+rpm-ostree install intel-oneapi-runtime-libs
 
 # <<<<<<<<<< Intel® oneAPI Toolkits
 
