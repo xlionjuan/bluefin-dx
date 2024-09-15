@@ -80,8 +80,8 @@ rpm-ostree install cloudflare-warp screen libwebp-tools tuned waydroid
 # >>>>>>>>>> Zerotier
 # Import GPG Key: WTF you're so lazy to host your pub key
 
-tee > /tmp/zt-gpg-key <<EOF
------BEGIN PGP PUBLIC KEY BLOCK-----
+echo '-----BEGIN PGP PUBLIC KEY BLOCK-----' >/tmp/zt-gpg-key
+cat >>/tmp/zt-gpg-key << END_OF_KEY
 Comment: GPGTools - https://gpgtools.org
 
 mQINBFdQq7oBEADEVhyRiaL8dEjMPlI/idO8tA7adjhfvejxrJ3Axxi9YIuIKhWU
@@ -133,8 +133,7 @@ m2KYzvMJZBk5dAtFa0SgLK4fg8X6Ygoo9E0JsXxSrW9I1JVfo6Ia//YOBMtt4XuN
 Awqahjkq87yxOYYTnJmr2OZtQuFboymfMhNqj3G2DYmZ/ZIXXPgwHx0fnd3R0Q==
 =JgAv
 END_OF_KEY
------END PGP PUBLIC KEY BLOCK-----
-EOF
+echo '-----END PGP PUBLIC KEY BLOCK-----' >>/tmp/zt-gpg-key
 
 rpm --import /tmp/zt-gpg-key
 
