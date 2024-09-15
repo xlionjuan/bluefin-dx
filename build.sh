@@ -76,9 +76,8 @@ curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /et
 # Install
 rpm-ostree install cloudflare-warp screen libwebp-tools tuned waydroid
 
-rpm-ostree uninstall kernal*
 
-rpm-ostree install kernel-6.8.11-300.fc40 
+rpm-ostree override remove kernel --install kernel-6.8.11-300.fc40 
 
 # >>>>>>>>>> Intel® oneAPI Toolkits
 # https://www.intel.com/content/www/us/en/docs/oneapi/installation-guide-linux/2024-2/yum-dnf-zypper.html#GUID-91D791FE-995A-48B1-B479-0B6AAEB91E8D
