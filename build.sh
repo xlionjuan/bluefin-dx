@@ -90,6 +90,11 @@ repo_gpgcheck=1
 gpgkey=https://yum.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
 EOF
 
+# Symlink
+mkdir -p "/var/usrlocal"
+ln -s "/var/usrlocal"  "/usr/local"
+mkdir -p "/usr/local/share/pkgconfig"
+
 # Install
 
 rpm-ostree install intel-basekit
