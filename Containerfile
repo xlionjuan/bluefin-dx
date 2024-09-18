@@ -36,7 +36,7 @@ ARG SOURCE_IMAGE="bluefin"
 ARG SOURCE_SUFFIX="-dx"
 
 ## SOURCE_TAG arg must be a version built for the specific image: eg, 39, 40, gts, latest
-ARG SOURCE_TAG="stable"
+ARG SOURCE_TAG="latest"
 
 
 ### 2. SOURCE IMAGE
