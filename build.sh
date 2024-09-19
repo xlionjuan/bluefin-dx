@@ -35,27 +35,13 @@ if [ -z "$RELEASE_DATA" ]; then
     exit 1
 fi
 
-# Parse JSON data without using jq to find the asset URL
-RUSTDESK_URL=""
-found=0
-
-# Read the JSON data line by line
-while IFS= read -r line; do
-    if echo "$line" | grep -q '"name"'; then
-        name=$(echo "$line" | sed 's/.*"name": "\(.*\)",*/\1/')
-        # Check if the name contains "x86_64" and ".rpm" and does not contain "suse"
-        if echo "$name" | grep -q "x86_64" && echo "$name" | grep -q "\.rpm" && ! echo "$name" | grep -q "suse"; then
-            found=1
-        else
-            found=0
-        fi
-    elif echo "$line" | grep -q '"browser_download_url"'; then
-        if [ "$found" -eq 1 ]; then
-            RUSTDESK_URL=$(echo "$line" | sed 's/.*"browser_download_url": "\(.*\)",*/\1/')
-            break
-        fi
-    fi
-done <<< "$RELEASE_DATA"
+# Use jq to parse JSON data and find the asset URL
+RUSTDESK_URL=$(echo "$RELEASE_DATA" | jq -r '.assets[] | select(
+    (.name | contains("x86_64")) and
+    (.name | endswith(".rpm")) and
+    (.name | contains("suse") | not) and
+    (.name | contains("sciter") | not)
+) | .browser_download_url' | head -n 1)
 
 # Check if the asset URL was found
 if [ -z "$RUSTDESK_URL" ]; then
