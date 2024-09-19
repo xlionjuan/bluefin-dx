@@ -74,7 +74,7 @@ rpm-ostree install $RUSTDESK_URL
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo
 
 # Install
-rpm-ostree install cloudflare-warp screen libwebp-tools tuned waydroid
+rpm-ostree install cloudflare-warp screen libwebp-tools tuned waydroid remmina
 
 
 # >>>>>>>>>> Zerotier
