@@ -19,12 +19,6 @@ echo "Creating symlinks to fix packages that install to /opt"
 mkdir -p "/var/opt"
 ln -s "/var/opt"  "/opt"
 
-# Scripts
-bash /home/runner/work/bluefin-dx/bluefin-dx/scripts/rustdesk.sh
-bash /home/runner/work/bluefin-dx/bluefin-dx/scripts/zerotier.sh
-#bash /home/runner/work/bluefin-dx/bluefin-dx/scripts/intel-one-api.sh
-
-
 # Add cloudflare-warp.repo to /etc/yum.repos.d/
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo
 
