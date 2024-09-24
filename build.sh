@@ -20,9 +20,9 @@ mkdir -p "/var/opt"
 ln -s "/var/opt"  "/opt"
 
 # Scripts
-bash ./scripts/rustdesk.sh
-bash ./scripts/zerotier.sh
-#bash ./scripts/intel-one-api.sh
+bash scripts/rustdesk.sh
+bash scripts/zerotier.sh
+#bash scripts/intel-one-api.sh
 
 
 # Add cloudflare-warp.repo to /etc/yum.repos.d/
