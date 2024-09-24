@@ -52,9 +52,9 @@ COPY build.sh /tmp/build.sh
 COPY scripts/* /tmp/
 
 RUN mkdir -p /var/lib/alternatives && \
-    /tmp/build.sh && \
     /tmp/rustdesk.sh \
-    /tmp/zerotier.sh\
+    /tmp/zerotier.sh \
+    /tmp/build.sh && \
     ostree container commit
 ## NOTES:
 # - /var/lib/alternatives is required to prevent failure with some RPM installs
