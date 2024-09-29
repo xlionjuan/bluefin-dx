@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ouex pipefail
+
 # >>>>>>>>>> Intel® oneAPI Toolkits
 # https://www.intel.com/content/www/us/en/docs/oneapi/installation-guide-linux/2024-2/yum-dnf-zypper.html#GUID-91D791FE-995A-48B1-B479-0B6AAEB91E8D
 

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ouex pipefail
 
 # Define the repository and the tag you want to fetch
 REPO="rustdesk/rustdesk"

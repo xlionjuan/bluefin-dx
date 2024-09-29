@@ -1,5 +1,9 @@
 #!/bin/bash
 
+RELEASE="$(rpm -E %fedora)"
+
+set -ouex pipefail
+
 # Import GPG Key: WTF you're so lazy to host your pub key
 
 echo '-----BEGIN PGP PUBLIC KEY BLOCK-----' >/tmp/zt-gpg-key
@@ -64,7 +68,7 @@ rpm --import /tmp/zt-gpg-key
 tee > /etc/yum.repos.d/zerotier.repo << EOF
 [zerotier]
 name=ZeroTier, Inc. RPM Release Repository
-baseurl=http://download.zerotier.com/redhat/fc/40
+baseurl=http://download.zerotier.com/redhat/fc/$RELEASE
 enabled=1
 gpgcheck=1
 EOF
