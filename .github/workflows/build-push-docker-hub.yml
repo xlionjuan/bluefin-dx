@@ -30,6 +30,11 @@ jobs:
       id-token: write
 
     steps:
+      - name: Upgrade system
+        if: github.event_name != 'pull_request'
+        run: |
+          sudo apt update && sudo apt upgrade -y
+
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
         uses: actions/checkout@v4
