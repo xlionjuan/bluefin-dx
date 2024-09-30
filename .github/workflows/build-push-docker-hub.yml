@@ -22,7 +22,7 @@
   jobs:
     build_push:
       name: Build and push image
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-22.04
   
       permissions:
         contents: read
@@ -118,19 +118,6 @@
           with:
             username: ${{ secrets.DOCKER_USERNAME }}
             password: ${{ secrets.DOCKER_PASSWORD }}
-
-        # Sign container
-        - uses: sigstore/cosign-installer@v3.6.0
-          if: github.event_name != 'pull_request'
-  
-        - name: Sign container image
-          if: github.event_name != 'pull_request'
-          run: |
-            cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.MY_IMAGE_NAME }}@${TAGS}
-          env:
-            TAGS: ${{ steps.push.outputs.digest }}
-            COSIGN_EXPERIMENTAL: false
-            COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
 
         - name: Push Image to Docker Hub
           uses: redhat-actions/push-to-registry@v2
