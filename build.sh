@@ -22,8 +22,11 @@ ln -s "/var/opt"  "/opt"
 # Add cloudflare-warp.repo to /etc/yum.repos.d/
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo
 
+# Add xlion-rustdesk-rpm-repo.repo to /etc/yum.repos.d/
+curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | sudo tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
+
 # Install
-rpm-ostree install cloudflare-warp screen libwebp-tools tuned waydroid ntpd-rs 
+rpm-ostree install cloudflare-warp screen libwebp-tools tuned waydroid ntpd-rs rustdesk
 
 
 #### Example for enabling a System Unit File
