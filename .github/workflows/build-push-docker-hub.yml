@@ -1,17 +1,17 @@
 ---
 name: Build and push to Docker Hub
 on:
-  pull_request:
-    branches:
-      - main
-  schedule:
-    - cron: '05 2 * * 5'  # 10:05am UTC every Saturday
+  #pull_request:
+    #branches:
+      #- main
+  #schedule:
+    #- cron: '05 2 * * 5'  # 10:05am UTC every Saturday
 
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**/README.md'
+  #push:
+    #branches:
+      #- main
+    #paths-ignore:
+      #- '**/README.md'
   workflow_dispatch:
 
 env:
