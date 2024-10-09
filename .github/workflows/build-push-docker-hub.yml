@@ -4,14 +4,14 @@ on:
   #pull_request:
     #branches:
       #- main
-  #schedule:
-    #- cron: '05 2 * * 5'  # 10:05am UTC every Saturday
+  schedule:
+    - cron: '05 2 * * 5'
 
-  #push:
-    #branches:
-      #- main
-    #paths-ignore:
-      #- '**/README.md'
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/README.md'
   workflow_dispatch:
 
 env:
