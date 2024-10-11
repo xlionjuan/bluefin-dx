@@ -23,7 +23,7 @@ ln -s "/var/opt"  "/opt"
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo
 
 # Add xlion-rustdesk-rpm-repo.repo to /etc/yum.repos.d/
-curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | sudo tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
+curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
 
 # Install
 rpm-ostree install cloudflare-warp screen tuned waydroid ntpd-rs rustdesk libwebp-tools
