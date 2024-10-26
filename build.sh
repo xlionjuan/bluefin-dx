@@ -19,6 +19,13 @@ echo "Creating symlinks to fix packages that install to /opt"
 mkdir -p "/var/opt"
 ln -s "/var/opt"  "/opt"
 
+# intel-lpmd
+# https://packages.fedoraproject.org/pkgs/intel-lpmd/intel-lpmd/
+
+rpm-ostree install https://kojipkgs.fedoraproject.org//packages/intel-lpmd/0.0.8/1.fc42/x86_64/intel-lpmd-0.0.8-1.fc42.x86_64.rpm
+
+# sudo systemctl start intel_lpmd.service
+
 # Remove tuned-ppd to prevent GNOME touching tuned
 # https://github.com/ublue-os/bluefin/issues/1824#issuecomment-2436177630
 rpm-ostree override remove tuned-ppd
