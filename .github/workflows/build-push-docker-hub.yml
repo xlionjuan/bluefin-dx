@@ -129,7 +129,6 @@ jobs:
           password: ${{ env.REGISTRY_PASSWORD }}
           oci: true 
           extra-args: |
-            #--disable-content-trust
             --compression-format=zstd
 
       # Sign container
