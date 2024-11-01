@@ -22,8 +22,13 @@ env:
 
 jobs:
   build_push:
-    name: Build and push image
+    name: Build and push image (OIDC TEST)
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+      id-token: write # needed for signing the images with GitHub OIDC Token
+
     steps:
 
       # Checkout push-to-registry action GitHub repository
