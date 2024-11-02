@@ -128,7 +128,7 @@ jobs:
           username: ${{ env.REGISTRY_USER }}
           password: ${{ env.REGISTRY_PASSWORD }}
           extra-args: |
-            --compression-format=zstd
+            --compression-format=zstd:chunked
 
       # Sign container
       - uses: sigstore/cosign-installer@v3.7.0
