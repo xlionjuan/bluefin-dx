@@ -6,7 +6,7 @@
   ],
   "transports": {
     "docker": {
-      "registry.hub.docker.com/xlionjuan/": [
+      "registry.hub.docker.com/xlionjuan": [
         {
           "type": "sigstoreSigned",
           "fulcio": {
