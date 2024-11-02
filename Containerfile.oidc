@@ -1,0 +1,7 @@
+FROM registry.hub.docker.com/xlionjuan/bluefin-dx:latest
+
+COPY etc/containers/ /etc/containers/
+COPY usr/bin/ /usr/bin/
+
+RUN /usr/bin/update-sigstore-certs.sh && \
+    /usr/bin/update-containers-policy.sh
