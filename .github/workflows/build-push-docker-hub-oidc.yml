@@ -135,16 +135,16 @@ jobs:
           extra-args: |
             --compression-format=zstd
 
-      # # Sign container
-      # - uses: sigstore/cosign-installer@v3.7.0
-      #   if: github.event_name != 'pull_request'
+      # Sign container
+      - uses: sigstore/cosign-installer@v3.7.0
+        if: github.event_name != 'pull_request'
 
-      # - name: Sign container image
-      #   if: github.event_name != 'pull_request'
-      #   run: |
-      #     cosign sign -y ${{ steps.registry_case.outputs.lowercase }}/${{ steps.build_image.outputs.image }}@${TAGS} --registry-username='${{ secrets.DOCKER_USERNAME }}' --registry-password='${{ secrets.DOCKER_PASSWORD }}'
+      - name: Sign container image
+        if: github.event_name != 'pull_request'
+        run: |
+          cosign sign -y ${{ steps.registry_case.outputs.lowercase }}/${{ steps.build_image.outputs.image }}@${TAGS} --registry-username='${{ secrets.DOCKER_USERNAME }}' --registry-password='${{ secrets.DOCKER_PASSWORD }}'
 
-      #   env:
-      #     TAGS: ${{ steps.push.outputs.digest }}
-      #     COSIGN_EXPERIMENTAL: false
-      #     #COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
+        env:
+          TAGS: ${{ steps.push.outputs.digest }}
+          COSIGN_EXPERIMENTAL: false
+          #COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
