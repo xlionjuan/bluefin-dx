@@ -5,14 +5,14 @@ FROM ghcr.io/ublue-os/bluefin-dx:41
 COPY build.sh /tmp/build.sh
 COPY scripts/* /tmp/
 
-COPY etc/containers/ /etc/containers/
-COPY usr/bin/ /usr/bin/
+#COPY etc/containers/ /etc/containers/
+#COPY usr/bin/ /usr/bin/
 
-COPY cosign.pub /etc/pki/containers/xlion-private.pub
+#COPY cosign.pub /etc/pki/containers/xlion-private.pub
 
 
 RUN mkdir -p /var/lib/alternatives && \
-    /usr/bin/update-containers-policy.sh && \
+    #/usr/bin/update-containers-policy.sh && \
     /tmp/zerotier.sh &&\
     /tmp/build.sh && \
     ostree container commit
