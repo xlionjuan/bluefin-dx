@@ -24,6 +24,10 @@ jobs:
   build_push:
     name: Build and push image
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
     steps:
 
       # Checkout push-to-registry action GitHub repository
