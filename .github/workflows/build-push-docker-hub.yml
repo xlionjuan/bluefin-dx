@@ -145,7 +145,7 @@ jobs:
       - name: Sign container image
         if: github.event_name != 'pull_request'
         run: |
-          cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ steps.registry_case.outputs.lowercase }}/${{ steps.build_image.outputs.image }}@${TAGS} --registry-username='${{ secrets.DOCKER_USERNAME }}' --registry-password='${{ secrets.DOCKER_PASSWORD }}'
+          cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.IMAGE_REGISTRY }}/${{ github.event.repository.name }}@${TAGS} --registry-username='${{ secrets.DOCKER_USERNAME }}' --registry-password='${{ secrets.DOCKER_PASSWORD }}'
         env:
           TAGS: ${{ steps.push.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
