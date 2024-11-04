@@ -27,6 +27,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
       attestations: write
     steps:
 
@@ -143,8 +144,7 @@ jobs:
 
       # Sign container
       - name: Sign container image
-        #if: github.event_name != 'pull_request'
-        if: false
+        if: github.event_name != 'pull_request'
         run: |
           cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.IMAGE_REGISTRY }}/${{ github.event.repository.name }}@${TAGS} --registry-username='${{ secrets.DOCKER_USERNAME }}' --registry-password='${{ secrets.DOCKER_PASSWORD }}'
         env:
@@ -153,7 +153,7 @@ jobs:
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
 
       - name: Attest
-        if: false
+        if: github.event_name != 'pull_request'
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: docker.io/${{ github.repository_owner }}/${{ env.MY_IMAGE_NAME }}
