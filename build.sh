@@ -34,7 +34,7 @@ rpm-ostree override remove tuned-ppd
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo
 
 # Add xlion-rustdesk-rpm-repo.repo to /etc/yum.repos.d/
-curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
+curl -fsSl https://rustdesk-rpm-repo.xlion.dev/nightly_r2.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
 
 # Install
 rpm-ostree install cloudflare-warp screen tuned waydroid ntpd-rs sudo-rs rustdesk libwebp-tools wireshark

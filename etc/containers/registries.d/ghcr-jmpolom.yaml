@@ -1,3 +1,0 @@
-docker:
-  registry.hub.docker.com/xlionjuan:
-    use-sigstore-attachments: true

@@ -9,12 +9,7 @@
       "registry.hub.docker.com/xlionjuan": [
         {
           "type": "sigstoreSigned",
-          "fulcio": {
-            "caPath": "/etc/pki/containers/fulcio.sigstore.dev.pub",
-            "oidcIssuer": "https://github.com/login/oauth",
-            "subjectEmail": "xlion@xlion.tw"
-          },
-          "rekorPublicKeyPath": "/etc/pki/containers/rekor.sigstore.dev.pub",
+          "keyPath": "/etc/pki/containers/xlion-private.pub",
           "signedIdentity": {
             "type": "matchRepository"
           }
