@@ -11,6 +11,7 @@ COPY usr/bin/ /usr/bin/
 COPY cosign.pub /etc/pki/containers/xlion-private.pub
 
 RUN mkdir -p /var/lib/alternatives && \
+/usr/bin/update-sigstore-certs.sh && \
     #/tmp/rustdesk.sh &&\
     /tmp/zerotier.sh &&\
     /tmp/build.sh && \
