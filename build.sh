@@ -28,7 +28,7 @@ dnf5 install -y https://kojipkgs.fedoraproject.org//packages/intel-lpmd/0.0.8/1.
 
 # Remove tuned-ppd to prevent GNOME touching tuned
 # https://github.com/ublue-os/bluefin/issues/1824#issuecomment-2436177630
-rpm-ostree override remove tuned-ppd
+dnf5 -y remove tuned-ppd
 
 # Add cloudflare-warp.repo to /etc/yum.repos.d/
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo
