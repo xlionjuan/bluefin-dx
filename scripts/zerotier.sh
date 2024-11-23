@@ -75,4 +75,4 @@ EOF
 
 # Install
 
-rpm-ostree install zerotier-one
+#rpm-ostree install zerotier-one

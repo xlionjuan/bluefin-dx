@@ -22,7 +22,7 @@ ln -s "/var/opt"  "/opt"
 # intel-lpmd
 # https://packages.fedoraproject.org/pkgs/intel-lpmd/intel-lpmd/
 
-rpm-ostree install https://kojipkgs.fedoraproject.org//packages/intel-lpmd/0.0.8/1.fc42/x86_64/intel-lpmd-0.0.8-1.fc42.x86_64.rpm
+dnf5 install -y https://kojipkgs.fedoraproject.org//packages/intel-lpmd/0.0.8/1.fc42/x86_64/intel-lpmd-0.0.8-1.fc42.x86_64.rpm
 
 # sudo systemctl start intel_lpmd.service
 
@@ -37,7 +37,7 @@ curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /et
 curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
 
 # Install
-rpm-ostree install cloudflare-warp screen tuned waydroid ntpd-rs sudo-rs rustdesk libwebp-tools wireshark
+dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid ntpd-rs sudo-rs rustdesk libwebp-tools wireshark
 
 #rpm-ostree install https://github.com/Open-Wine-Components/umu-launcher/releases/download/1.1.1/umu-launcher-1.1.1-1.20241004.12ebba1.fc40.noarch.rpm
 
