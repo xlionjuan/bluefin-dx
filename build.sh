@@ -19,12 +19,6 @@ echo "Creating symlinks to fix packages that install to /opt"
 mkdir -p "/var/opt"
 ln -s "/var/opt"  "/opt"
 
-# intel-lpmd
-# https://packages.fedoraproject.org/pkgs/intel-lpmd/intel-lpmd/
-
-dnf5 install -y https://kojipkgs.fedoraproject.org//packages/intel-lpmd/0.0.8/1.fc42/x86_64/intel-lpmd-0.0.8-1.fc42.x86_64.rpm
-
-# sudo systemctl start intel_lpmd.service
 
 # Remove tuned-ppd to prevent GNOME touching tuned
 # https://github.com/ublue-os/bluefin/issues/1824#issuecomment-2436177630
@@ -38,6 +32,16 @@ curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc
 
 # Install
 dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid ntpd-rs sudo-rs rustdesk libwebp-tools wireshark
+
+# Make chsh back
+dnf5 reinstall -y util-linux
+
+# intel-lpmd
+# https://packages.fedoraproject.org/pkgs/intel-lpmd/intel-lpmd/
+
+dnf5 install -y https://kojipkgs.fedoraproject.org//packages/intel-lpmd/0.0.8/1.fc42/x86_64/intel-lpmd-0.0.8-1.fc42.x86_64.rpm
+
+# sudo systemctl start intel_lpmd.service
 
 #rpm-ostree install https://github.com/Open-Wine-Components/umu-launcher/releases/download/1.1.1/umu-launcher-1.1.1-1.20241004.12ebba1.fc40.noarch.rpm
 
