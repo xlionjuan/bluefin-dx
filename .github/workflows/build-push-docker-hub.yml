@@ -166,7 +166,7 @@ jobs:
 
       - name: Attest
         if: github.event_name != 'pull_request'
-        uses: actions/attest-build-provenance@v1
+        uses: actions/attest-build-provenance@v2
         with:
           subject-name: ${{ env.IMAGE_REGISTRY }}/${{ env.MY_IMAGE_NAME }}
           subject-digest: ${{ steps.push.outputs.digest }}
