@@ -28,10 +28,12 @@ dnf5 -y remove tuned-ppd
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo
 
 # Add xlion-rustdesk-rpm-repo.repo to /etc/yum.repos.d/
-curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
+#curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
 
 # Install
-dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid ntpd-rs sudo-rs rustdesk libwebp-tools wireshark
+dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid ntpd-rs sudo-rs libwebp-tools wireshark
+
+dnf5 install -y https://github.com/21pages/rustdesk/releases/download/revert_linux_use_cpal_build/rustdesk-1.3.5-0.x86_64.rpm
 
 # Make chsh back
 dnf5 reinstall -y util-linux
