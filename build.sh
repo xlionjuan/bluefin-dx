@@ -31,7 +31,7 @@ curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /et
 curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
 
 # Install
-dnf5 install -y cloudflare-warp zerotier-one rustdesk screen tuned waydroid ntpd-rs sudo-rs libwebp-tools wireshark
+dnf5 install -y cloudflare-warp zerotier-one rustdesk screen tuned waydroid ntpd-rs sudo-rs libwebp-tools wireshark koji
 
 #dnf5 install -y https://github.com/21pages/rustdesk/releases/download/revert_linux_use_cpal_build/rustdesk-1.3.5-0.x86_64.rpm
 
@@ -56,3 +56,7 @@ systemctl enable zerotier-one
 ## Use ntpd-rs to replace chronyd
 systemctl disable chronyd
 systemctl enable ntpd-rs
+
+cd /tmp
+koji download-build --arch=$(uname -m) kernel-6.12.1-200.fc41
+rpm-ostree override replace kernel-modules-core-6*.rpm kernel-core-6*.rpm kernel-modules-6*.rpm kernel-6*.rpm kernel-modules-extra-6*.rpm
