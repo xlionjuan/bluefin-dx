@@ -28,20 +28,20 @@ dnf5 -y remove tuned-ppd
 curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /etc/yum.repos.d/cloudflare-warp.repo
 
 # Add xlion-rustdesk-rpm-repo.repo to /etc/yum.repos.d/
-#curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
+curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
 
 # Install
-dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid ntpd-rs sudo-rs libwebp-tools wireshark
+dnf5 install -y cloudflare-warp zerotier-one rustdesk screen tuned waydroid ntpd-rs sudo-rs libwebp-tools wireshark
 
-dnf5 install -y https://github.com/21pages/rustdesk/releases/download/revert_linux_use_cpal_build/rustdesk-1.3.5-0.x86_64.rpm
+#dnf5 install -y https://github.com/21pages/rustdesk/releases/download/revert_linux_use_cpal_build/rustdesk-1.3.5-0.x86_64.rpm
 
 # Make chsh back
-dnf5 reinstall -y util-linux
+#dnf5 reinstall -y util-linux
 
 # intel-lpmd
 # https://packages.fedoraproject.org/pkgs/intel-lpmd/intel-lpmd/
 
-dnf5 install -y https://kojipkgs.fedoraproject.org//packages/intel-lpmd/0.0.8/1.fc42/x86_64/intel-lpmd-0.0.8-1.fc42.x86_64.rpm
+#dnf5 install -y https://kojipkgs.fedoraproject.org//packages/intel-lpmd/0.0.8/1.fc42/x86_64/intel-lpmd-0.0.8-1.fc42.x86_64.rpm
 
 # sudo systemctl start intel_lpmd.service
 
@@ -50,7 +50,7 @@ dnf5 install -y https://kojipkgs.fedoraproject.org//packages/intel-lpmd/0.0.8/1.
 #### Example for enabling a System Unit File
 
 systemctl enable warp-svc.service
-systemctl enable rustdesk.service
+systemctl disable rustdesk.service # SELinux
 systemctl enable zerotier-one
 
 ## Use ntpd-rs to replace chronyd
