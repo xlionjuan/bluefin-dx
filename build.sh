@@ -57,6 +57,5 @@ systemctl enable zerotier-one
 systemctl disable chronyd
 systemctl enable ntpd-rs
 
-cd /tmp
-koji download-build --arch=$(uname -m) kernel-6.12.1-200.fc41
-dnf5 update -y kernel-*.rpm
+dnf5 copr enable bieszczaders/kernel-cachyos
+rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra --install kernel-cachyos
