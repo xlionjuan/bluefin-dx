@@ -59,4 +59,4 @@ systemctl enable ntpd-rs
 
 cd /tmp
 koji download-build --arch=$(uname -m) kernel-6.12.1-200.fc41
-rpm-ostree override replace kernel-modules-core-6*.rpm kernel-core-6*.rpm kernel-modules-6*.rpm kernel-6*.rpm kernel-modules-extra-6*.rpm
+dnf5 update -y kernel-*.rpm
