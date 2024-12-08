@@ -59,5 +59,7 @@ systemctl enable ntpd-rs
 
 dnf5 -y remove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
 dnf5 copr enable -y bieszczaders/kernel-cachyos
+dnf5 copr enable -y bieszczaders/kernel-cachyos-addons
 # rpm-ostree override remove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra --install kernel-cachyos
-rpm-ostree install kernel-cachyos
+rpm-ostree install kernel-cachyos scx-scheds
+systemctl enable scx.service
