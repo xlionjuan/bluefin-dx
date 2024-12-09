@@ -60,6 +60,7 @@ systemctl enable ntpd-rs
 dnf5 -y remove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra zram-generator-defaults
 dnf5 copr enable -y bieszczaders/kernel-cachyos
 dnf5 copr enable -y bieszczaders/kernel-cachyos-addons
-dnf5 -y install kernel-cachyos scx-scheds cachyos-settings uksmd
+rpm-ostree install kernel-cachyos
+dnf5 -y install scx-scheds cachyos-settings uksmd
 systemctl enable scx.service
 systemctl enable uksmd.service
