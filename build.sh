@@ -30,6 +30,8 @@ curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /et
 # Add xlion-rustdesk-rpm-repo.repo to /etc/yum.repos.d/
 curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
 
+dnf5 upgrade -y dnf5
+
 # Install
 dnf5 install -y cloudflare-warp zerotier-one rustdesk screen tuned waydroid ntpd-rs sudo-rs libwebp-tools wireshark koji
 
