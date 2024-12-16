@@ -35,6 +35,7 @@ dnf5 upgrade -y dnf5
 # Install
 dnf5 install -y cloudflare-warp zerotier-one rustdesk screen tuned waydroid ntpd-rs sudo-rs libwebp-tools wireshark koji rclone
 
+restorecon -v /usr/lib/rustdesk/rustdesk
 chcon -t bin_t /usr/lib/rustdesk/rustdesk || true
 
 #dnf5 install -y https://github.com/21pages/rustdesk/releases/download/revert_linux_use_cpal_build/rustdesk-1.3.5-0.x86_64.rpm
