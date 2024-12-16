@@ -52,7 +52,7 @@ dnf5 install -y cloudflare-warp zerotier-one rustdesk screen tuned waydroid ntpd
 #### Example for enabling a System Unit File
 
 systemctl enable warp-svc.service
-systemctl disable rustdesk.service # SELinux
+systemctl enable rustdesk.service
 systemctl enable zerotier-one
 
 ## Use ntpd-rs to replace chronyd
