@@ -33,9 +33,9 @@ curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc
 dnf5 upgrade -y dnf5
 
 # Install
-dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid ntpd-rs sudo-rs libwebp-tools wireshark koji rclone
+dnf5 install -y cloudflare-warp zerotier-one screen tuned rustdesk waydroid ntpd-rs sudo-rs libwebp-tools wireshark koji rclone
 
-rpm-ostree install rustdesk
+chcon -u system_u -r object_r -t bin_t /usr/lib/rustdesk/rustdesk
 
 #dnf5 install -y https://github.com/21pages/rustdesk/releases/download/revert_linux_use_cpal_build/rustdesk-1.3.5-0.x86_64.rpm
 
