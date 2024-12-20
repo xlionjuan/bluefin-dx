@@ -33,7 +33,7 @@ curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc
 dnf5 upgrade -y dnf5
 
 # Install
-dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid ntpd-rs sudo-rs libwebp-tools wireshark koji rclone
+dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid rustdesk ntpd-rs sudo-rs libwebp-tools wireshark koji rclone
 
 #semanage fcontext -a -t bin_t "/usr/lib/rustdesk/rustdesk"
 #restorecon -v "/usr/lib/rustdesk/rustdesk"
@@ -55,7 +55,7 @@ dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid ntpd-rs sudo-
 #### Example for enabling a System Unit File
 
 systemctl enable warp-svc.service
-#systemctl enable rustdesk.service
+systemctl enable rustdesk.service
 systemctl enable zerotier-one
 
 ## Use ntpd-rs to replace chronyd
