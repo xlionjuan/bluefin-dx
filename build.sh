@@ -30,7 +30,7 @@ curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /et
 # Add xlion-rustdesk-rpm-repo.repo to /etc/yum.repos.d/
 curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
 
-curl -fsSl https://xlionjuan.github.io/ntpd-rs-repos/rpm/xlion-ntpd-rs-repo.repo | sudo tee /etc/yum.repos.d/xlion-ntpd-rs-repo.repo
+curl -fsSl https://xlionjuan.github.io/ntpd-rs-repos/rpm/xlion-ntpd-rs-repo.repo | tee /etc/yum.repos.d/xlion-ntpd-rs-repo.repo
 
 dnf5 upgrade -y dnf5
 
