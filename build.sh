@@ -30,15 +30,12 @@ curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | tee /et
 # Add xlion-rustdesk-rpm-repo.repo to /etc/yum.repos.d/
 curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc/yum.repos.d/xlion-rustdesk-rpm-repo.repo
 
+curl -fsSl https://xlionjuan.github.io/ntpd-rs-repos/rpm/xlion-ntpd-rs-repo.repo | sudo tee /etc/yum.repos.d/xlion-ntpd-rs-repo.repo
+
 dnf5 upgrade -y dnf5
 
 # Install
-dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid rustdesk ntpd-rs sudo-rs libwebp-tools wireshark koji rclone
-
-#semanage fcontext -a -t bin_t "/usr/lib/rustdesk/rustdesk"
-#restorecon -v "/usr/lib/rustdesk/rustdesk"
-
-#dnf5 install -y https://github.com/21pages/rustdesk/releases/download/revert_linux_use_cpal_build/rustdesk-1.3.5-0.x86_64.rpm
+dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid rustdesk ntpd-rs sudo-rs wireshark koji rclone
 
 # Make chsh back
 #dnf5 reinstall -y util-linux
@@ -59,7 +56,7 @@ systemctl enable rustdesk.service
 systemctl enable zerotier-one
 
 ## Use ntpd-rs to replace chronyd
-systemctl disable chronyd
+systemctl mask chronyd
 systemctl enable ntpd-rs
 
 # CachyOS Kernel
