@@ -32,7 +32,7 @@ curl -fsSl https://xlionjuan.github.io/rustdesk-rpm-repo/nightly.repo | tee /etc
 
 curl -fsSl https://xlionjuan.github.io/ntpd-rs-repos/rpm/xlion-ntpd-rs-repo.repo | tee /etc/yum.repos.d/xlion-ntpd-rs-repo.repo
 
-dnf5 copr enable pgdev/ghostty
+dnf5 copr enable -y pgdev/ghostty
 
 dnf5 upgrade -y dnf5
 
