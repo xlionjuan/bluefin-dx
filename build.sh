@@ -37,11 +37,7 @@ dnf5 copr enable -y pgdev/ghostty
 dnf5 upgrade -y dnf5
 
 # Install
-dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid rustdesk ntpd-rs sudo-rs wireshark koji rclone ghostty dnf-plugins-core
-dnf5 config-manager --add-repo https://boinc.berkeley.edu/dl/linux/stable/fc40
-dnf5 config-manager --set-enabled boinc.berkeley.edu_dl_linux_stable_fc40
-rpm --import https://boinc.berkeley.edu/dl/linux/stable/fc40/boinc.gpg
-dnf5 install -y boinc-client boinc-manager
+dnf5 install -y cloudflare-warp zerotier-one screen tuned waydroid rustdesk ntpd-rs sudo-rs wireshark koji rclone ghostty
 
 # Make chsh back
 #dnf5 reinstall -y util-linux
