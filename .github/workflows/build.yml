@@ -141,20 +141,19 @@ jobs:
           registry: ghcr.io
 
       - name: Push Image
-        uses: redhat-actions/push-to-registry@v2
+        uses: Wandalen/wretry.action@master
         if: github.event_name != 'pull_request'
         id: push
-        #env:
-          #REGISTRY_USER: ${{ secrets.DOCKER_USERNAME }}
-          #REGISTRY_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         with:
-          image: ${{ steps.build_image.outputs.image }}
-          tags: ${{ steps.build_image.outputs.tags }}
-          registry: ${{ env.IMAGE_REGISTRY }}
-          #username: ${{ env.REGISTRY_USER }}
-          #password: ${{ env.REGISTRY_PASSWORD }}
-          extra-args: |
-            --compression-format=zstd
+          action: redhat-actions/push-to-registry@v2
+          attempt_limit: 3
+          attempt_delay: 15000
+          with: |
+            image: ${{ steps.build_image.outputs.image }}
+            tags: ${{ steps.build_image.outputs.tags }}
+            registry: ${{ env.IMAGE_REGISTRY }}
+            extra-args: |
+              --compression-format=zstd
 
       # Sign container
       - name: Sign container image
