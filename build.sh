@@ -68,4 +68,4 @@ dnf5 copr enable -y bieszczaders/kernel-cachyos-addons
 rpm-ostree install kernel-cachyos-lto kernel-cachyos-lto-devel-matched
 dnf5 -y install scx-scheds cachyos-settings uksmd
 systemctl enable scx.service
-systemctl enable uksmd.service
+#systemctl enable uksmd.service # I don't know why
