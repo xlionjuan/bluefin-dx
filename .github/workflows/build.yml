@@ -39,7 +39,7 @@ jobs:
       - name: Checkout Push to Registry action
         uses: actions/checkout@v4
 
-      - uses: sigstore/cosign-installer@v3.7.0
+      - uses: sigstore/cosign-installer@v3.8.0
 
       - name: Verify
         shell: bash
