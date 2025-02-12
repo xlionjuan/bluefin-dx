@@ -109,34 +109,46 @@ jobs:
           registry: ghcr.io
 
       - name: Push Image
-        uses: Wandalen/wretry.action@v3.8.0
+        uses: redhat-actions/push-to-registry@5ed88d269cf581ea9ef6dd6806d01562096bee9c # v2.8
         if: github.event_name != 'pull_request'
         id: push
         with:
-          action: redhat-actions/push-to-registry@5ed88d269cf581ea9ef6dd6806d01562096bee9c # v2.8
-          attempt_limit: 3
-          attempt_delay: 15000
-          with: |
-            tags: |
-                ${{ steps.build_image.outputs.tags }}
-            extra-args: |
-                --compression-format=zstd
+          tags: ${{ steps.build_image.outputs.tags }}
+          extra-args: |
+              --compression-format=zstd
+
+      # - name: Push Image
+      #   uses: Wandalen/wretry.action@v3.8.0
+      #   if: github.event_name != 'pull_request'
+      #   id: push
+      #   with:
+      #     action: redhat-actions/push-to-registry@5ed88d269cf581ea9ef6dd6806d01562096bee9c # v2.8
+      #     attempt_limit: 3
+      #     attempt_delay: 15000
+      #     with: |
+      #       tags: |
+      #           ${{ steps.build_image.outputs.tags }}
+      #       extra-args: |
+      #           --compression-format=zstd
 
       # Sign container
       - name: Sign container image
         if: github.event_name != 'pull_request'
         run: |
-          cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.IMAGE_REGISTRY }}/${{ github.event.repository.name }}@${TAGS}
+          cosign sign -y --key env://COSIGN_PRIVATE_KEY ${FULL_NAME}@${TAGS}
         #cosign sign -y --key env://COSIGN_PRIVATE_KEY ${{ env.IMAGE_REGISTRY }}/${{ github.event.repository.name }}@${TAGS} --registry-username='${{ secrets.DOCKER_USERNAME }}' --registry-password='${{ secrets.DOCKER_PASSWORD }}'
         env:
-          TAGS: ${{ steps.push.outputs.outputs && fromJSON(steps.push.outputs.outputs).digest }}
+          #TAGS: ${{ steps.push.outputs.outputs && fromJSON(steps.push.outputs.outputs).digest }} #For retry one
+          TAGS: ${{ steps.push.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
+          FULL_NAME: ${{ env.IMAGE_REGISTRY }}/${{ github.event.repository.name }}
 
       - name: Attest
         if: github.event_name != 'pull_request'
         uses: actions/attest-build-provenance@v2.2.0
         with:
           subject-name: ${{ env.IMAGE_REGISTRY }}/${{ env.MY_IMAGE_NAME }}
-          subject-digest: ${{ steps.push.outputs.outputs && fromJSON(steps.push.outputs.outputs).digest }}
+          #subject-digest: ${{ steps.push.outputs.outputs && fromJSON(steps.push.outputs.outputs).digest }}
+          subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
