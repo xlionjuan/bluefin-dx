@@ -109,7 +109,7 @@ jobs:
           registry: ghcr.io
 
       - name: Push Image
-        uses: Wandalen/wretry.action@master
+        uses: Wandalen/wretry.action@v3.8.0
         if: github.event_name != 'pull_request'
         id: push
         with:
@@ -118,9 +118,9 @@ jobs:
           attempt_delay: 15000
           with: |
             tags: |
-              ${{ steps.build_image.outputs.tags }}
+                ${{ steps.build_image.outputs.tags }}
             extra-args: |
-              --compression-format=zstd
+                --compression-format=zstd
 
       # Sign container
       - name: Sign container image
