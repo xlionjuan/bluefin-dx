@@ -102,7 +102,6 @@ jobs:
 
       - name: Log in to ghcr.io
         uses: redhat-actions/podman-login@v1.7
-        if: github.event_name != 'pull_request'
         with:
           username: ${{ github.actor }}
           password: ${{ github.token }}
