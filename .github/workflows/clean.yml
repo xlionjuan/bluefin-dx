@@ -11,7 +11,7 @@ jobs:
       packages: write
     steps:
       - name: Delete Images Older Than 60 Days
-        uses: dataaxiom/ghcr-cleanup-action@v1
+        uses: dataaxiom/ghcr-cleanup-action@v1.0.16
         with:
           packages: bluefin-dx
           older-than: 60 days
