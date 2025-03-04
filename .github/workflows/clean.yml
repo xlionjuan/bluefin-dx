@@ -1,7 +1,7 @@
 name: Cleanup Old Images
 on:
-  schedule:
-    - cron: "15 18 * * 2" # Runs at 18:15, only on Tuesday. 
+  # schedule:
+  #   - cron: "15 18 * * 2" # Runs at 18:15, only on Tuesday. 
   workflow_dispatch:
 
 jobs:

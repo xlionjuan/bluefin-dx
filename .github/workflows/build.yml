@@ -1,17 +1,17 @@
 ---
 name: Build and push main
 on:
-  pull_request:
-    branches:
-      - main
-  schedule:
-    - cron: '05 22 * * 3'  # Runs at 22:05, only on Wednesday
+  # pull_request:
+  #   branches:
+  #     - main
+  # schedule:
+  #   - cron: '05 22 * * 3'  # Runs at 22:05, only on Wednesday
 
-  push:
-    branches:
-      - main
-    paths-ignore:
-      - '**/README.md'
+  # push:
+  #   branches:
+  #     - main
+  #   paths-ignore:
+  #     - '**/README.md'
   workflow_dispatch:
 
 env:
